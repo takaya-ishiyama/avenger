@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import init from "../out/frontend.js";
+import { NextPage } from "next";
 
 export default function Home() {
-  const [message, setMessage] = useState();
+  // const WasmSample = dynamic(
+  //   {
+  //     loader: async () => {
+  //       const initWasm = await import("../out/frontend_bg.wasm.js");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/hello");
-      const { message } = await res.json();
-      setMessage(message);
-    };
-    fetchData();
-  }, []);
+  //       console.log(initWasm);
+  //       return () => <button onClick={() => {}}>実行する</button>;
+  //     },
+  //   },
+  //   { ssr: false }
+  // );
+  console.log(init());
 
-  if (!message) return <p>Loading...</p>;
-
-  return <p>{message}</p>;
+  return <p>aaaaa</p>;
 }
